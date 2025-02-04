@@ -11,6 +11,7 @@ import { AnxietyComponent } from './anxiety/anxiety.component';
 import { HopeComponent } from './hope/hope.component';
 import { LoginComponent } from './login/login.component';
 import { PeaceComponent } from './peace/peace.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PeaceComponent } from './peace/peace.component';
     AnxietyComponent,
     HopeComponent,
     LoginComponent,
-    PeaceComponent
+    PeaceComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
