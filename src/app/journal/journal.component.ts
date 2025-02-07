@@ -13,6 +13,7 @@ interface JournalEntry {
 export class JournalComponent {
   entryContent: string = '';
   journalEntries: JournalEntry[] = [];
+  editingIndex: number | null = null; 
 
   postEntry() {
     if (this.entryContent.trim()) {
@@ -23,6 +24,22 @@ export class JournalComponent {
       this.journalEntries.push(newEntry);
       this.entryContent = ''; 
     }
+  }
+
+  editEntry(index: number) {
+    this.editingIndex = index; 
+    this.entryContent = this.journalEntries[index].content; 
+  }
+
+  saveEntry(index: number) {
+    this.journalEntries[index].content = this.entryContent; 
+    this.entryContent = ''; 
+    this.editingIndex = null; 
+  }
+
+  cancelEdit() {
+    this.entryContent = ''; 
+    this.editingIndex = null; 
   }
 
   deleteEntry(index: number) {
