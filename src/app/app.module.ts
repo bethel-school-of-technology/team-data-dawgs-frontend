@@ -12,6 +12,8 @@ import { HopeComponent } from './hope/hope.component';
 import { LoginComponent } from './login/login.component';
 import { PeaceComponent } from './peace/peace.component';
 import { RegisterComponent } from './register/register.component';
+import { JournalComponent } from './journal/journal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import { RegisterComponent } from './register/register.component';
     HopeComponent,
     LoginComponent,
     PeaceComponent,
-    RegisterComponent
+    RegisterComponent,
+    JournalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
