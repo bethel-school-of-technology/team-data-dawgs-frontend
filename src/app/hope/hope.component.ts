@@ -1,10 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { VerseService } from '../verse.service';
 
 @Component({
   selector: 'app-hope',
   templateUrl: './hope.component.html',
   styleUrls: ['./hope.component.css']
 })
-export class HopeComponent {
+export class HopeComponent implements OnInit {
+ verses: any[] = [];
 
+  constructor(private verseService: VerseService) { }
+
+  ngOnInit() {
+    this.loadVerses();
+  }
+
+  loadVerses() {
+    this.verseService.getVerses().subscribe(data => {
+      this.verses = data;
+    });
+  }
+
+  createVerse(newVerse: any) {
+    this.verseService.createVerse(newVerse).subscribe(() => {
+      this.loadVerses();
+    });
+  }
+
+  deleteVerse(verseId: number) {
+    this.verseService.deleteVerse(verseId).subscribe(() => {
+      this.loadVerses();
+    });
+  }
 }
