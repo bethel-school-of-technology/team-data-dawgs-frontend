@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VerseService {
 
-  private apiUrl = 'http://localhost:${PORT}'
+  private apiUrl = 'http://localhost:207.244.251.209'
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,10 @@ export class VerseService {
 
   createVerse(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
+  }
+
+  updateVerse(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, data);
   }
 
   deleteVerse(id: number): Observable<any> {

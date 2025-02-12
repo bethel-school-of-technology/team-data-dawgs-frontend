@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 
 @Component({
@@ -7,23 +6,18 @@ import { UserService } from '../user.service';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
-  message!: string;
+  email: string = '';
+  password: string = '';
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) {
-    this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+  constructor(private userService: UserService) {}
+
+  register() {
+    this.userService.register({ email: this.email, password: this.password })
+      .subscribe(response => {
+        console.log('Registered successfully', response);
+      }, error => {
+        console.error('Registration error', error);
+      });
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const { username, password } = this.registerForm.value;
-      const isRegistered = this.userService.register(username, password);
-      this.message = isRegistered 
-        ? 'Registration successful' 
-        : 'User already exists';
-    }
-  }
 }

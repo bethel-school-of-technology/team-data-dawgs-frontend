@@ -1,31 +1,24 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  loginMessage!: string; 
+  email: string = '';
+  password: string = '';
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+  constructor(private userService: UserService) {}
+  
+  login() {
+    this.userService.login({ email: this.email, password: this.password })
+      .subscribe(response => {
+        console.log('Logged in successfully', response);
+      }, error => {
+        console.error('Login error', error);
+      });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      if (this.authService.login(username, password)) {
-        this.loginMessage = 'Login successful';
-      } else {
-        this.loginMessage = 'Login failed: Invalid username or password';
-      }
-    }
-  }
 }
 

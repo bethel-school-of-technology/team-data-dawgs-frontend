@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService {
-  private users: { username: string; password: string }[] = [];
+  private apiUrl = 'http://localhost:207.244.251.209';
 
-  register(username: string, password: string): boolean {
-    const userExists = this.users.find(user => user.username === username);
+  constructor(private http: HttpClient) {}
 
-    if (!userExists) {
-      this.users.push({ username, password });
-      return true;
-    } else {
-      return false; 
-    }
+  login(user: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, user);
   }
 
-  login(username: string, password: string): boolean {
-    const user = this.users.find(
-      (u) => u.username === username && u.password === password
-    );
-    return user !== undefined;
+  register(user: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
   }
 }
+

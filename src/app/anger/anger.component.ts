@@ -28,6 +28,12 @@ export class AngerComponent implements OnInit {
     });
   }
 
+  updateVerse(id: number, updatedVerse: any) {
+    this.verseService.updateVerse(id, updatedVerse).subscribe(() => {
+      this.loadVerses();
+    });
+  }
+
   deleteVerse(verseId: number) {
     this.verseService.deleteVerse(verseId).subscribe(() => {
       this.loadVerses();
