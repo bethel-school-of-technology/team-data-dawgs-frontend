@@ -21,22 +21,4 @@ export class AngerComponent implements OnInit {
       this.verses = data;
     });
   }
-
-  createVerse(newVerse: any) {
-    this.verseService.createVerse(newVerse).subscribe(() => {
-      this.loadVerses();
-    });
-  }
-
-  updateVerse(id: number, updatedVerse: any) {
-    this.verseService.updateVerse(id, updatedVerse).subscribe(() => {
-      this.loadVerses();
-    });
-  }
-
-  deleteVerse(verseId: number) {
-    this.verseService.deleteVerse(verseId).subscribe(() => {
-      this.loadVerses();
-    });
-  }
 }

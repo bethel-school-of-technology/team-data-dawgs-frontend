@@ -5,12 +5,8 @@
       {{ verse.id }}
       {{ verse.category }}
       {{verse.location}}
-      <button (click)="deleteVerse(verse.id)">Delete</button>
-      <button (click)="updateVerse(verse.id, { name: 'Updated Verse' })">Update</button>
     </li>
   </ul>
-
-  <button (click)="createVerse({ name: 'New Verse' })">Create Verse</button>
 </div>
 <p>Create Journal Entry 
     <button routerLink="/journal">Go to Journal</button>
