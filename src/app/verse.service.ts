@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VerseService {
 
-  private apiUrl = 'http://localhost:207.244.251.209'
+  private apiUrl = 'http://localhost:3000/verses'
 
   constructor(private http: HttpClient) { }
 

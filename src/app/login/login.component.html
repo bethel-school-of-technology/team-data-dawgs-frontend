@@ -1,20 +1,9 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input id="username" formControlName="username">
-    </div>
-  <br>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password">
-    </div>
-  
-    <button type="submit">Login</button>
-  </form>
-  
-  <div *ngIf="loginMessage" class="message">
-    {{ loginMessage }}
-  </div>
+<div>
+  <h2>Login</h2>
+  <input [(ngModel)]="email" placeholder="Email" />
+  <input [(ngModel)]="password" type="password" placeholder="Password" />
+  <button (click)="login()">Login</button>
+</div>
 
   <p>Don't have an account? 
     <button routerLink="/register">Register</button>

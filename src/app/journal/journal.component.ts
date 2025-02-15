@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JournalService } from '../journal.service';
 
 interface JournalEntry {
   content: string;
@@ -45,4 +46,34 @@ export class JournalComponent {
   deleteEntry(index: number) {
     this.journalEntries.splice(index, 1);
   }
+
+  constructor(private journalService: JournalService) { }
+  
+    ngOnInit() {
+      this.loadJournals();
+    }
+  
+    loadJournals() {
+      this.journalService.getJournals().subscribe(data => {
+        this.journalEntries = data;
+      });
+    }
+  
+    createJournal(newJournal: any) {
+      this.journalService.createJournal(newJournal).subscribe(() => {
+        this.loadJournals();
+      });
+    }
+  
+    updateJournal(id: number, updatedJournal: any) {
+      this.journalService.updateJournal(id, updatedJournal).subscribe(() => {
+        this.loadJournals();
+      });
+    }
+  
+    deleteJournal(journalId: number) {
+      this.journalService.deleteJournal(journalId).subscribe(() => {
+        this.loadJournals();
+      });
+    }
 }
