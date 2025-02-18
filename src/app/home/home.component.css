@@ -2,3 +2,13 @@ img{
     display: block;
     margin: auto;
 }
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:dimgray
+}
+
+h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:palevioletred
+}
