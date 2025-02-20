@@ -1,0 +1,27 @@
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+}
+
+.video-container iframe {
+    border: 10px solid lightblue;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button {
+    width: 90%;
+    padding: 10px;
+    background-color:bisque;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  button:hover {
+    background-color:burlywood;
+  }
