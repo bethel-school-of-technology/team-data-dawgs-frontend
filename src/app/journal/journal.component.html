@@ -4,16 +4,16 @@
   <button (click)="postEntry()">Post Entry</button>
 
   <div *ngFor="let entry of journalEntries; let i = index">
-    <h4>{{ entry.date | date: 'medium' }}</h4>
+    <h4>{{ entry.createdAt | date: 'medium' }}</h4>
     <div *ngIf="editingIndex === i; else viewMode">
       <textarea [(ngModel)]="entry.content"></textarea>
-      <button (click)="saveEntry(i)">Save</button>
+      <button (click)="saveEntry((editingIndex))">Save</button>
       <button (click)="cancelEdit()">Cancel</button>
     </div>
     <ng-template #viewMode>
       <p>{{ entry.content }}</p>
       <button (click)="editEntry(i)">Edit</button>
-      <button (click)="deleteEntry(i)">Delete</button>
+      <button (click)="deleteJournal(entry.id)">Delete</button>
     </ng-template>
   </div>
 </div>

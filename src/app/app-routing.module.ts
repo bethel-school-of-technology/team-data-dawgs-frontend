@@ -13,6 +13,7 @@ import { JournalComponent } from './journal/journal.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  // { path: 'category/:category', component: GeneralCategoryComponent },
   { path: 'anger', component: AngerComponent },
   { path: 'joy', component: JoyComponent },
   { path: 'anxiety', component: AnxietyComponent },

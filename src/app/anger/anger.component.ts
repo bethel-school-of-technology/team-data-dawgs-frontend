@@ -17,7 +17,7 @@ export class AngerComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('anger').subscribe(data => {
       this.verses = data;
     });
   }

@@ -16,7 +16,7 @@ export class JoyComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('joy').subscribe(data => {
       this.verses = data;
     });
   }

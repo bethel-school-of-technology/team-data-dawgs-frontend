@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { JournalService } from '../journal.service';
 
 interface JournalEntry {
+  id?: number;
   content: string;
-  date: Date;
+  createdAt: Date;
 }
 
 @Component({
@@ -20,9 +21,11 @@ export class JournalComponent {
     if (this.entryContent.trim()) {
       const newEntry: JournalEntry = {
         content: this.entryContent,
-        date: new Date()
+        createdAt: new Date()
       };
-      this.journalEntries.push(newEntry);
+      
+      this.createJournal(newEntry);
+
       this.entryContent = ''; 
     }
   }
@@ -30,13 +33,36 @@ export class JournalComponent {
   editEntry(index: number) {
     this.editingIndex = index; 
     this.entryContent = this.journalEntries[index].content; 
+    const entryId = this.journalEntries[index]?.id;
+    
+    if (entryId !== undefined) {
+        this.updateJournal(entryId, this.entryContent);
+    } else {
+        console.error('Journal entry ID is undefined');
+    }
+    
   }
 
   saveEntry(index: number) {
-    this.journalEntries[index].content = this.entryContent; 
-    this.entryContent = ''; 
-    this.editingIndex = null; 
+    this.journalEntries[index].content = this.entryContent;
+
+    
+    this.entryContent = '';
+    this.editingIndex = null;
+
+    
+    const updatedEntry = this.journalEntries[index];
+    this.journalService.updateJournal(updatedEntry.id!, updatedEntry.content).subscribe(
+      (response) => {
+        console.log('Entry updated successfully:', response);
+      },
+      (error) => {
+        console.error('Error updating journal entry:', error);
+      }
+    );
   }
+     
+  
 
   cancelEdit() {
     this.entryContent = ''; 
@@ -71,7 +97,10 @@ export class JournalComponent {
       });
     }
   
-    deleteJournal(journalId: number) {
+    deleteJournal(journalId?: number) {
+      if (!journalId) {
+        return
+      }
       this.journalService.deleteJournal(journalId).subscribe(() => {
         this.loadJournals();
       });

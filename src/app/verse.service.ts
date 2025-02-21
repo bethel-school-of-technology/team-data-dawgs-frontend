@@ -11,8 +11,12 @@ export class VerseService {
 
   constructor(private http: HttpClient) { }
 
-  getVerses(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getVerses(category?: string): Observable<any> {
+    let params = '';
+    if (category) {
+      params = '?category=' + category;
+    }
+    return this.http.get(this.apiUrl + params);
   }
 
   createVerse(data: any): Observable<any> {
