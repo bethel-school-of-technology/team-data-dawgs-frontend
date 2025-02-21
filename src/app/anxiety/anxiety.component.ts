@@ -16,7 +16,7 @@ export class AnxietyComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('anxiety').subscribe(data => {
       this.verses = data;
     });
   }

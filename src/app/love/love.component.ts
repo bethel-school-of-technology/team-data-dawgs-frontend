@@ -16,7 +16,7 @@ export class LoveComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('love').subscribe(data => {
       this.verses = data;
     });
   }

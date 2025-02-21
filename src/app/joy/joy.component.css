@@ -11,6 +11,27 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+p{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 10px;
+  font-size: large;
+  box-shadow: 0 4px 8px rgba(1,1,0,0.2);
+}
+
+p:hover {
+  color:lightseagreen;  
+}
+
+h1{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:white;
+  border: 10px solid bisque;
+  background-color: bisque;
+  border-radius: 50px;
+  padding: 20px;
+  justify-content: center;
+}
+
 button {
     width: 90%;
     padding: 10px;

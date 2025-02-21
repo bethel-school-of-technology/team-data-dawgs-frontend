@@ -1,11 +1,11 @@
 <div>
   <h1>Verses</h1>
   <ul>
-    <li *ngFor="let verse of verses">
-      {{ verse.id }}
-      {{ verse.category }}
+    <p *ngFor="let verse of verses">
+      {{ verse.content }}
+      <br>
       {{verse.location}}
-    </li>
+    </p>
   </ul>
 </div>
 <h1>Sermons</h1>

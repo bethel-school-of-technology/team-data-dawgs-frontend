@@ -16,7 +16,7 @@ export class PeaceComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('peace').subscribe(data => {
       this.verses = data;
     });
   }

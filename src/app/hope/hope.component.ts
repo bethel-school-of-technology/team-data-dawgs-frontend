@@ -16,7 +16,7 @@ export class HopeComponent implements OnInit {
   }
 
   loadVerses() {
-    this.verseService.getVerses().subscribe(data => {
+    this.verseService.getVerses('hope').subscribe(data => {
       this.verses = data;
     });
   }
